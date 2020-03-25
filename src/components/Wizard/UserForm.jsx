@@ -9,8 +9,28 @@ import {
 
 export default ({visible, nextPage}) => {
   const { register, triggerValidation, errors } = useFormContext();
-  return (<div style={{display: visible ? '' : 'none' }}>
 
+  console.log(errors)
+
+  return (<div style={{display: visible ? '' : 'none' }}>
+    <div>
+      <label>First name</label>
+      <input
+        type="text"
+        name="firstName"
+        ref={register({ required: true, maxLength: 80 })}
+      />
+      {errors.firstName && 'This one is missing'}
+    </div>
+    <div>
+      <label>Last name</label>
+      <input
+        type="text"
+        name="lastName"
+        ref={register({ required: true, maxLength: 100 })}
+      />
+      {errors.lastName && 'This one is missing'}
+    </div>
     <div>
       <label>ShortPhone 3</label>
       <ShortPhoneNumberWithNameStatic />
@@ -42,10 +62,9 @@ export default ({visible, nextPage}) => {
     {/*<PhoneItem title="Show this" name="phony" errors={errors} />*/}
 
     <button
-      type="button"
       onClick={async () => {
-        const result = await triggerValidation(["shortPhone3", "shortPhone4", "shortPhone5", 'another']);
-        if (result) { nextPage() }
+        await triggerValidation(["firstName", "lastName", "shortPhone3", "shortPhone4", "shortPhone5", 'another'])
+        && nextPage()
       }}
     >
       UserForm-Next
