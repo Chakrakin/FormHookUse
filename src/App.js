@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import RHFExample from './RHFExample';
 import Wizard from './components/Wizard/Wizard';
+import {WizardStateful} from './components/WizardStateful/WizardStateful';
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
       Wizard Example
       <Wizard/>
       <hr />
+      <WizardStateful/>
     </div>
   );
 }
