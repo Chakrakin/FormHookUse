@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {WizardStatefulStep1} from './WizardStatefulStep1';
-import {WizardStatefulStep2} from './WizardStatefulStep2';
-import {WizardStatefulSummary} from './WizardStatefulSummary';
+import {WizardStatefulStep1} from './Step1/WizardStatefulStep1';
+import {WizardStatefulStep2} from './Step2/WizardStatefulStep2';
+import {WizardStatefulSummary} from './Summary/WizardStatefulSummary';
 import WizardStatefulRouteAwareStatusBar from './WizardStatefulRouteAwareStatusBar';
 
 const wizardSteps = [
@@ -16,5 +16,5 @@ export const WizardRoutes = () =>
     <WizardStatefulRouteAwareStatusBar elements={wizardSteps} />
     <Route path="/step1" component={WizardStatefulStep1} />
     <Route path="/step2" component={WizardStatefulStep2} />
-    <Route path="/result" component={WizardStatefulSummary} />
+    <Route path="/summary" component={WizardStatefulSummary} />
   </BrowserRouter>)

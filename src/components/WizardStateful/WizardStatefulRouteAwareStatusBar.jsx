@@ -23,7 +23,8 @@ export default ({elements}) => {
     <WizardWrapper>
       {elements.map((el, idx) =>
         <WizardStep key={idx} className={location.pathname === el.forRoute ? 'active' : ''}>
-          <Link to={el.forRoute}>{el.title}</Link>
+          {/*  this could also be a Link if needed <Link to={el.forRoute}>{el.title}</Link>*/}
+          {el.title}
         </WizardStep>
       )}
   </WizardWrapper>)
