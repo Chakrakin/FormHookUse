@@ -6,5 +6,6 @@ describe('WizardStateful', () => {
   it('should display the wizard', () => {
     render(<WizardStateful/>)
     expect(screen.getByTestId('wizardFormStateful')).toBeInTheDocument();
+    expect(screen.getAllByTestId('wizardRouteAwareStep').length).toBeTruthy()
   });
 });
