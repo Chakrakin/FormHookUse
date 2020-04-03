@@ -10,10 +10,10 @@ export default () => {
   const onSubmit = data => { console.log(data) }
 
   // console.log(watch('example')) // watch input value by passing the name of it
-  console.log(watch('exampleRequired')) // watch input value by passing the name of it
+  // console.log(watch('exampleRequired')) // watch input value by passing the name of it
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} data-testid="rhfexample">
       {/* register your input into the hook by invoking the "register" function */}
       <div>
           <input name="example" defaultValue="test" ref={register} />

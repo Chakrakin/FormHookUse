@@ -10,7 +10,7 @@ import {
 export default ({visible, nextPage}) => {
   const { register, triggerValidation, errors } = useFormContext();
 
-  console.log(errors)
+  // console.log(errors)
 
   return (<div style={{display: visible ? '' : 'none' }}>
     <div>

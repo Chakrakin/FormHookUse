@@ -1,20 +1,23 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Route, Router, Switch} from 'react-router-dom';
 import {WizardStatefulStep1} from './Step1/WizardStatefulStep1';
 import {WizardStatefulStep2} from './Step2/WizardStatefulStep2';
 import {WizardStatefulSummary} from './Summary/WizardStatefulSummary';
 import WizardStatefulRouteAwareStatusBar from './WizardStatefulRouteAwareStatusBar';
+import {createBrowserHistory} from 'history';
 
 const wizardSteps = [
   {title: "Start", forRoute: "/step1"},
   {title: "Details", forRoute: "/step2"},
-  {title: "Summary", forRoute: "/result"}
+  {title: "Summary", forRoute: "/summary"}
 ];
 
-export const WizardRoutes = () =>
-  (<BrowserRouter>
+export const WizardRoutes = ({history}) =>
+  (<Router history={history || createBrowserHistory({})}>
     <WizardStatefulRouteAwareStatusBar elements={wizardSteps} />
-    <Route path="/step1" component={WizardStatefulStep1} />
-    <Route path="/step2" component={WizardStatefulStep2} />
-    <Route path="/summary" component={WizardStatefulSummary} />
-  </BrowserRouter>)
+    <Switch>
+      <Route path="/step1" component={WizardStatefulStep1} />
+      <Route path="/step2" component={WizardStatefulStep2} />
+      <Route path="/summary" component={WizardStatefulSummary} />
+    </Switch>
+  </Router>)

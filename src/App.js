@@ -11,7 +11,7 @@ const App = () => {
       React Hooks Basic Example (Console)<br/>
       <RHFExample/>
       <hr />
-      Wizard Example
+      <label>Wizard Example</label>
       <Wizard/>
       <hr />
       <WizardStateful/>

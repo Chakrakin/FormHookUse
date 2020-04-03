@@ -6,11 +6,11 @@ createStore({
   data: {}
 });
 
-export const WizardStateful = () => {
-  return (<div>
-    <StateMachineProvider>
-      {process.env.NODE_ENV !== 'production' && <DevTool />}
-      <WizardRoutes/>
-    </StateMachineProvider>
-  </div>)
-}
+export const WizardStateful = () => (
+    <div data-testid="wizardFormStateful">
+      <StateMachineProvider>
+        {process.env.NODE_ENV !== 'production' && <DevTool />}
+        <WizardRoutes/>
+      </StateMachineProvider>
+    </div>
+  )

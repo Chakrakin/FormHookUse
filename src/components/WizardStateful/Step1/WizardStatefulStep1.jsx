@@ -12,7 +12,7 @@ export const WizardStatefulStep1 = props => {
     props.history.push("./step2");
   }
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} data-testid="wizardStatefulStep1">
       <div>
         <label htmlFor="firstName">First Name</label>
         <input name="firstName" ref={register} defaultValue={state.data.firstName}/>

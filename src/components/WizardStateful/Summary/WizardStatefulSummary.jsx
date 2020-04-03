@@ -9,9 +9,9 @@ export const WizardStatefulSummary = props => {
     props.history.push('/step1')
   }
   return (
-    <>
+    <div data-testid="wizardStatefulSummary">
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <button onClick={restart}>Restart</button>
-    </>
+    </div>
   )
 }

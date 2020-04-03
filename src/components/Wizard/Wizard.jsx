@@ -23,7 +23,7 @@ export default (props) => {
   };
 
   return (
-    <div className="wizardForm">
+    <div className="wizardForm" data-testid="wizardForm">
       <WizardStatusBar elements={[{title: 'UserForm'}, {title: 'CartForm'}]} status={currentStep}/>
       <FormContext {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>

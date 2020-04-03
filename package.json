@@ -5,8 +5,10 @@
   "dependencies": {
     "@material-ui/core": "^4.9.7",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^10.0.1",
+    "@testing-library/react": "^10.0.2",
     "@testing-library/user-event": "^7.1.2",
+    "history": "^4.10.1",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "little-state-machine": "^2.13.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -19,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
