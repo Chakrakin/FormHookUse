@@ -6,11 +6,10 @@ import {FormContext, useForm} from 'react-hook-form';
 describe('CartForm', () => {
   const prevFn = () => {}
   const submitFn = () => {}
-  let renderMethods;
 
   describe('visible', () => {
     beforeEach(() => {
-      renderMethods = render(<TestForm><CartForm visible={true} previousPage={prevFn}/></TestForm>);
+      render(<TestForm><CartForm visible={true} previousPage={prevFn}/></TestForm>);
     })
 
     it('should be visible if visibility true is passed', () => {
