@@ -8,6 +8,7 @@ export default ({visible, previousPage}) => {
         <label>Email</label>
         <input
           type="text"
+          placeholder="Email"
           name="email"
           ref={register({
               required: true,
