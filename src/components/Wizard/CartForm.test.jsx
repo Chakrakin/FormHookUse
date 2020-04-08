@@ -5,6 +5,10 @@ import TSuit from '../../utilty/test/TestFormHandling';
 
 describe('CartForm', () => {
 
+  afterEach(() =>  {
+    TSuit.resetAllMocks();
+  })
+
   describe('visible', () => {
     it('should be visible if visibility true is passed', () => {
       render(<TSuit.Form><CartForm visible={true} previousPage={TSuit.actions.prev}/></TSuit.Form>);
@@ -19,7 +23,16 @@ describe('CartForm', () => {
     });
   });
 
-  describe('input controls', () => {
+  describe('form buttons', () => {
+    it('should call previous step action handler', () => {
+      render(<TSuit.Form><CartForm visible={true} previousPage={TSuit.actions.prev}/></TSuit.Form>);
+      fireEvent.click(screen.getByText('CartForm-Previous'));
+      expect(TSuit.actions.prev).toHaveBeenCalled();
+      expect(TSuit.actions.prev).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('input controls plain', () => {
     const wrongEmail = 'wrong';
     const correctEmail = 'a@b.com';
     const controlTests = {
@@ -55,7 +68,7 @@ describe('CartForm', () => {
     });
   });
 
-  describe('input controls', () => {
+  describe('input controls with convenience functions', () => {
     let componentUnderTest;
 
     beforeEach(() => {

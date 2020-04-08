@@ -58,9 +58,7 @@ export default ({visible, previousPage}) => {
       />
       {errors.developer && errors.developer.type === 'required' && 'developer missing!'}
     </div>
-    <button type="button" onClick={() => previousPage()}>
-      CartForm-Previous
-    </button>
+    <button type="button" onClick={() => previousPage()}>CartForm-Previous</button>
     <input type="submit" value="finalize"/>
   </div>)
 }
