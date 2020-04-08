@@ -31,7 +31,7 @@ basic idea:
     () => <Controller as={component} name={name} rules={rules} defaultValue={value}/>
   export const ShortPhoneNumberTemplate = composeController(<input type="tel"/>)(shortPhoneNumberRules)
  */
-const telComponent = <input type="tel"/>
+const telComponent = <input type="tel" placeholder="ShortPhoneNr"/>
 
 export const generateWithFixedName = component => rules =>
   () => <Controller as={component} name="shortPhone3" rules={rules} defaultValue=""/>;

@@ -10,6 +10,7 @@ export default ({visible, previousPage}) => {
           type="text"
           placeholder="Email"
           name="email"
+          data-testid="email-form-field"
           ref={register({
               required: true,
               pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -23,6 +24,7 @@ export default ({visible, previousPage}) => {
         <input
           type="tel"
           name="mobileNumber"
+          data-testid="mobilenumber-form-field"
           ref={register({ required: true, maxLength: 11, minLength: 8 })}
         />
       {errors.mobileNumber && errors.mobileNumber.type === 'required' && 'mobileNumber missing!'}
@@ -57,7 +59,7 @@ export default ({visible, previousPage}) => {
       {errors.developer && errors.developer.type === 'required' && 'developer missing!'}
     </div>
     <button type="button" onClick={() => previousPage()}>
-      CartFormPure-Previous
+      CartForm-Previous
     </button>
     <input type="submit" value="finalize"/>
   </div>)

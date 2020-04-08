@@ -14,7 +14,7 @@ export default ({visible, nextPage}) => {
 
   return (<div style={{display: visible ? '' : 'none' }}>
     <div>
-      <label>First name</label>
+      <label>Firstname</label>
       <input
         type="text"
         name="firstName"
@@ -23,7 +23,7 @@ export default ({visible, nextPage}) => {
       {errors.firstName && 'This one is missing'}
     </div>
     <div>
-      <label>Last name</label>
+      <label>Lastname</label>
       <input
         type="text"
         name="lastName"
