@@ -9,7 +9,7 @@ export const WizardStatefulStep2 = props => {
   const {action, state} = useStateMachine(updateAction)
   const onSubmit = data => {
     action(data); // send the payload to the updateAction FN
-    props.history.push("./summary");
+    props.history.push('/summary');
   }
   const back = () => {
     props.history.push('/step1')

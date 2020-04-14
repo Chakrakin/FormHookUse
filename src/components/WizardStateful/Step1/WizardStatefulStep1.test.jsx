@@ -1,8 +1,9 @@
 import {WizardStatefulStep1} from './WizardStatefulStep1';
 import React from 'react';
-import {screen} from '@testing-library/react';
+import {act, fireEvent, screen} from '@testing-library/react';
 import TSuit from '../../../utilty/test/TestFormHandling';
 import {createStore} from 'little-state-machine';
+import {createMemoryHistory} from 'history';
 
 createStore({
   data: {}
@@ -35,24 +36,19 @@ describe('WizardStatefulStep1', () => {
     });
   });
 
-  /*
-  behaviour from outside?
-   */
-  // describe('Submit', () => {
-  //   it('should push to next step after submitting an valid form', async () => {
-  //     const {history} = TSuit.renderWithRouter(TSuit.withStateMachine(<WizardStatefulStep1 />))
-  //     const spyPush = jest.spyOn(history, 'push');
-  //
-  //     await act(async () => {
-  //       fireEvent.input(screen.getByPlaceholderText('firstName'), 'first');
-  //       fireEvent.input(screen.getByPlaceholderText('lastName'), 'last');
-  //       // fireEvent.click(screen.getByText('Submit'));
-  //       fireEvent.click(screen.getByTestId('subsi'));
-  //     });
-  //
-  //     expect(spyPush).toHaveBeenCalledTimes(1);
-  //     expect(spyPush).toHaveBeenCalledWith('./step2');
-  //   });
-  // });
+  describe('Submit', () => {
+    it('should push to next step after submitting an valid form', async () => {
+      const hist = createMemoryHistory();
+      const spyPush = jest.spyOn(hist, 'push');
+      TSuit.renderWithRouter(TSuit.withStateMachine(<WizardStatefulStep1 history={hist}/>))
+      await act(async () => {
+        fireEvent.input(screen.getByPlaceholderText('firstName'), {target: {value: 'first'}});
+        fireEvent.input(screen.getByPlaceholderText('lastName'), {target: {value: 'last'}});
+        fireEvent.click(screen.getByText('Submit'));
+      });
+      expect(spyPush).toHaveBeenCalledTimes(1);
+      expect(spyPush).toHaveBeenCalledWith('/step2');
+    });
+  });
 });
 

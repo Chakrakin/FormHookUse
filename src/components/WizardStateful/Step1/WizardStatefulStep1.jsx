@@ -9,9 +9,9 @@ export const WizardStatefulStep1 = props => {
   const {action, state} = useStateMachine(updateAction)
   const onSubmit = data => {
     action(data); // send the payload to the updateAction FN
-    props.history.push("./step2");
+    props.history.push("/step2");
   }
-  // <form onSubmit={handleSubmit(onSubmit)} data-testid="wizardStatefulStep1">
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} data-testid="wizardStatefulStep1">
       <div>
@@ -24,7 +24,7 @@ export const WizardStatefulStep1 = props => {
         <input name="lastName" ref={register} defaultValue={state.data.lastName} placeholder="lastName"/>
         {errors.lastName && <p>{errors.lastName.message}</p>}
       </div>
-      <input type="submit" value="Submit" data-testid="subsi" />
+      <input type="submit" value="Submit" />
     </form>
   )
 }
