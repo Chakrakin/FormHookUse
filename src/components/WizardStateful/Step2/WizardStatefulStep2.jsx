@@ -18,11 +18,11 @@ export const WizardStatefulStep2 = props => {
     <form onSubmit={handleSubmit(onSubmit)} data-testid="wizardStatefulStep2">
       <div>
         <label htmlFor="age">Age</label>
-        <input name="age" ref={register} defaultValue={state.data.age}/>
+        <input name="age" ref={register} defaultValue={state.data.age} data-testid="age-form-field"/>
         {errors.age && <p>{errors.age.message}</p>}
       </div>
       <button onClick={back}>Back</button>
-      <input type="submit" />
+      <input type="submit" value="Submit" />
     </form>
   )
 }

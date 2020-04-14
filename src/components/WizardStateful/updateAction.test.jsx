@@ -14,6 +14,11 @@ describe('updateAction', () => {
     property: 'anotherPayloadValue'
   }
 
+  it('should return an object with a data attribute on empty params', () => {
+    const actionResult = updateAction({}, {});
+    expect(actionResult.data).toBeDefined();
+  });
+
   it('should return unmodified state on empty payload', () => {
     const actionResult = updateAction(state, {});
     expect(actionResult).not.toBe(state); // as of new object

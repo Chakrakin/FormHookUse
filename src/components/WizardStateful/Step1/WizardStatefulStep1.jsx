@@ -11,19 +11,20 @@ export const WizardStatefulStep1 = props => {
     action(data); // send the payload to the updateAction FN
     props.history.push("./step2");
   }
+  // <form onSubmit={handleSubmit(onSubmit)} data-testid="wizardStatefulStep1">
   return (
     <form onSubmit={handleSubmit(onSubmit)} data-testid="wizardStatefulStep1">
       <div>
         <label htmlFor="firstName">First Name</label>
-        <input name="firstName" ref={register} defaultValue={state.data.firstName}/>
+        <input name="firstName" ref={register} defaultValue={state.data.firstName} placeholder="firstName"/>
         {errors.firstName && <p>{errors.firstName.message}</p>}
       </div>
       <div>
         <label htmlFor="lastName">Last Name</label>
-        <input name="lastName" ref={register} defaultValue={state.data.lastName}/>
+        <input name="lastName" ref={register} defaultValue={state.data.lastName} placeholder="lastName"/>
         {errors.lastName && <p>{errors.lastName.message}</p>}
       </div>
-      <input type="submit" />
+      <input type="submit" value="Submit" data-testid="subsi" />
     </form>
   )
 }

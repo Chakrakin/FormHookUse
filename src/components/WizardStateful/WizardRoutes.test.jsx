@@ -1,10 +1,11 @@
 import {createMemoryHistory} from 'history';
 import {mockSteps} from '../../testConstants';
-import {screen, render} from '@testing-library/react';
+import {screen} from '@testing-library/react';
 import {WizardRoutes} from './WizardRoutes';
 import React from 'react';
 import {Router} from 'react-router-dom';
-import {createStore, StateMachineProvider} from 'little-state-machine';
+import {createStore} from 'little-state-machine';
+import TSuit from '../../utilty/test/TestFormHandling';
 
 createStore({
   data: {}
@@ -18,7 +19,7 @@ describe('WizardRoutes', () => {
   });
 
   beforeEach(() => {
-    renderWithStateMachine(<WizardRoutes history={history}/>)
+    TSuit.renderWithStateMachine(<WizardRoutes history={history}/>)
   });
 
   it('should have all steps displayed', () => {
@@ -36,6 +37,4 @@ describe('WizardRoutes', () => {
       expect(screen.getByTestId(step.testId)).toBeInTheDocument();
     })
   });
-
-  const renderWithStateMachine = (ui) => ({ ...render(<StateMachineProvider>{ui}</StateMachineProvider>) })
 });
