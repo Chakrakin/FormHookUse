@@ -15,10 +15,12 @@ describe('WizardStatefulStep2', () => {
       componentUnderTest = TSuit.renderWithStateMachine(<WizardStatefulStep2 />);
     });
 
-    it('should display age inputcontrol, submit and back button', () => {
-      expect(screen.getByText('Age')).toBeInTheDocument();
-      expect(screen.getByText('Back')).toBeInTheDocument();
-      expect(screen.getByText('Submit')).toBeInTheDocument();
+    it('should display age inputcontrol, submit and back button', async () => {
+      await act(async () => {
+        expect(screen.getByText('Age')).toBeInTheDocument();
+        expect(screen.getByText('Back')).toBeInTheDocument();
+        expect(screen.getByText('Submit')).toBeInTheDocument();
+      });
     });
 
     it('should handle age errors on values below 18 or string and handle error message removal automatically on valid input afterwards', async () => {
@@ -27,6 +29,32 @@ describe('WizardStatefulStep2', () => {
         {right: '18', wrong: 'dd', selector: screen.getByTestId('age-form-field'), validationMessage: 'age must be a number', submitText: 'Submit'}
       ]
       await TSuit.executeTestsForSamples(componentUnderTest, ageTestSampler, <WizardStatefulStep2 />)
+    });
+
+    it('should have a checkbox to display buy state', async () => {
+      await act(async () => {
+        expect(screen.getByRole('checkbox')).toBeInTheDocument();
+      });
+    });
+
+    it('should have a credit card field that is visible only when checkbox is checked and age is > 18', async () => {
+      await act(async () => {
+        fireEvent.input(screen.getByTestId('age-form-field'), {target: {value: 18}});
+        fireEvent.click(screen.getByRole('checkbox'));
+      });
+      expect(screen.getByPlaceholderText('numbercheck')).toBeInTheDocument();
+      await act(async () => {
+        fireEvent.click(screen.getByRole('checkbox'));
+      });
+      expect(screen.queryByPlaceholderText('numbercheck')).not.toBeInTheDocument();
+      await act(async () => {
+        fireEvent.click(screen.getByRole('checkbox'));
+      });
+      expect(screen.getByPlaceholderText('numbercheck')).toBeInTheDocument();
+      await act(async () => {
+        fireEvent.input(screen.getByTestId('age-form-field'), {target: {value: 17}});
+      });
+      expect(screen.queryByPlaceholderText('numbercheck')).not.toBeInTheDocument();
     });
   });
   describe('Back', () => {
