@@ -4,12 +4,7 @@ import {screen} from '@testing-library/react';
 import {WizardRoutes} from './WizardRoutes';
 import React from 'react';
 import {Router} from 'react-router-dom';
-import {createStore} from 'little-state-machine';
 import TSuit from '../../utilty/test/TestFormHandling';
-
-createStore({
-  data: {}
-});
 
 describe('WizardRoutes', () => {
   let history;

@@ -1,8 +1,7 @@
 import {numberValidator} from './ValidationHandlers';
 
-const overwriteRule = (rule, options) => {
+export const overwriteValidationRule = (rule, options) =>
   Object.assign({}, JSON.parse(JSON.stringify(rule)), options) // JSON parse + stringify for deep clone
-}
 
 /*
   allowed fields are validation rules from react-hook-form

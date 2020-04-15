@@ -2,12 +2,8 @@ import {WizardStatefulStep1} from './WizardStatefulStep1';
 import React from 'react';
 import {act, fireEvent, screen} from '@testing-library/react';
 import TSuit from '../../../utilty/test/TestFormHandling';
-import {createStore} from 'little-state-machine';
 import {createMemoryHistory} from 'history';
 
-createStore({
-  data: {}
-});
 describe('WizardStatefulStep1', () => {
   describe('Form Validation', () => {
     let componentUnderTest;

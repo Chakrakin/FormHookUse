@@ -4,10 +4,11 @@ import TSuit from '../../utilty/test/TestFormHandling';
 import UserForm from './UserForm';
 
 describe('UserForm', () => {
-
   describe('visible', () => {
+    let componentUnderTest;
+
     beforeEach(() => {
-      render(<TSuit.Form><UserForm visible={true} nextPage={TSuit.actions.next}/></TSuit.Form>);
+      componentUnderTest = render(<TSuit.Form><UserForm visible={true} nextPage={TSuit.actions.next}/></TSuit.Form>);
     });
 
     it('should be visible if visibility true is passed', () => {
@@ -19,10 +20,6 @@ describe('UserForm', () => {
       expect(screen.getAllByPlaceholderText(/^ShortPhone/i).length).toBe(4);
       expect(screen.getAllByPlaceholderText('ShortPhoneNr').length).toBe(4); // verify with simple string
       expect(screen.findAllByPlaceholderText(/^LongPhone/i).length).toBeUndefined(); // check findAll.. - we expect it not to be here
-    });
-
-    it('should render a custom composed short-phone-number input element', () => {
-
     });
   });
 

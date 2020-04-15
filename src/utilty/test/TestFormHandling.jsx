@@ -46,7 +46,6 @@ const inputControlElementValidationTest = async ({right, wrong, selector, valida
   expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
 }
 
-
 // provide a api instead of exporting all parts - pollutes intellisense
 export default {
   actions: {

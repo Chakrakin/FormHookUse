@@ -1,6 +1,6 @@
 import React from 'react';
 import {Controller, ErrorMessage} from 'react-hook-form';
-import {shortPhoneNumberRules} from '../../utilty/validation/ValidationRules';
+import {overwriteValidationRule, shortPhoneNumberRules} from '../../utilty/validation/ValidationRules';
 
 /*
 DIRECT ABSTRACTION
@@ -34,20 +34,19 @@ basic idea:
 const telComponent = <input type="tel" placeholder="ShortPhoneNr"/>
 
 export const generateWithFixedName = component => rules =>
-  () => <Controller as={component} name="shortPhone3" rules={rules} defaultValue=""/>;
+  () => <Controller as={component} name="shortPhone3" rules={rules} defaultValue="" data-testid="shortPhone3"/>;
 
 export const generateToFunction = component => rules => name =>
-  () => <Controller as={component} name={name} rules={rules} defaultValue=""/>;
+  () => <Controller as={component} name={name} rules={rules} defaultValue="" data-testid={name}/>;
 
 export const generateToComponent = component => rules => ({name, errors}) => {
   return (<div>
     <label>{name}</label>
-    <Controller as={component} name={name} rules={rules} defaultValue=""/>
+    <Controller as={component} name={name} rules={rules} defaultValue="" data-testid={name}/>
     <ErrorMessage errors={errors} name={name} />
   </div>)
 }
-
-export const ShortPhoneNumberWithNameStatic = generateWithFixedName(telComponent)(shortPhoneNumberRules);
+export const ShortPhoneNumberWithNameStatic = generateWithFixedName(telComponent)(overwriteValidationRule(shortPhoneNumberRules, {required: 'shortPhone3 is required'}));
 export const ShortPhoneNumberWithName = generateToFunction(telComponent)(shortPhoneNumberRules)("shortPhone4");
 export const ShortPhoneNumberWithoutName = generateToFunction(telComponent)(shortPhoneNumberRules);
 
