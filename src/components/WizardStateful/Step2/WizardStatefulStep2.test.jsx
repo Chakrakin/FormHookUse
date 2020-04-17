@@ -23,9 +23,9 @@ describe('WizardStatefulStep2', () => {
       });
     });
 
-    it('should handle age errors on values below 18 or string and handle error message removal automatically on valid input afterwards', async () => {
+    it('should handle age errors on values below 12 or string and handle error message removal automatically on valid input afterwards', async () => {
       const ageTestSampler = [
-        {right: '18', wrong: '17', selector: screen.getByTestId('age-form-field'), validationMessage: 'age must be greater than or equal to 18', submitText: 'Submit'},
+        {right: '18', wrong: '11', selector: screen.getByTestId('age-form-field'), validationMessage: 'age must be greater than or equal to 12', submitText: 'Submit'},
         {right: '18', wrong: 'dd', selector: screen.getByTestId('age-form-field'), validationMessage: 'age must be a number', submitText: 'Submit'}
       ]
       await TSuit.executeTestsForSamples(componentUnderTest, ageTestSampler, <WizardStatefulStep2 />)

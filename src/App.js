@@ -3,6 +3,7 @@ import './App.css';
 import RHFExample from './RHFExample';
 import Wizard from './components/Wizard/Wizard';
 import {WizardStateful} from './components/WizardStateful/WizardStateful';
+import HookShelf from './components/HookShelf/HookShelf';
 
 const App = () => {
 
@@ -15,6 +16,8 @@ const App = () => {
       <Wizard/>
       <hr />
       <WizardStateful/>
+      <hr />
+      <HookShelf />
     </div>
   );
 }

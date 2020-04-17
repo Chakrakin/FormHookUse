@@ -22,5 +22,9 @@ describe('App', () => {
   it('should have a stateful wizard displayed', () => {
     expect(screen.getByTestId('wizardFormStateful')).toBeInTheDocument();
   });
+
+  it('should have a HookSelf displayed', () => {
+    expect(screen.getByTestId('hookShelf')).toBeInTheDocument();
+  });
 });
 
